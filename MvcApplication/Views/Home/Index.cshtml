@@ -1,0 +1,22 @@
+﻿@model List<MyLibraryCore.Book>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @if (Model != null)
+    {
+        foreach (var book in Model)
+        {
+            <div>@book.Title</div>   
+        }
+    }
+</body>
+</html>
