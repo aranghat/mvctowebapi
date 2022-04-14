@@ -1,0 +1,26 @@
+﻿@model MyLibraryCore.AuthRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<form action="/login" method="post">
+    @Html.TextBoxFor(d => d.Email);
+    @Html.PasswordFor(d => d.Password);
+    
+    <button type="submit">
+        Login
+    </button>
+</form>
+<div>
+
+</div>
+</body>
+</html>

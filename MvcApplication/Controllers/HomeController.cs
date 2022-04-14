@@ -17,11 +17,21 @@ namespace MvcApplication.Controllers
         {
 
             RestRequest request = new RestRequest("/books", Method.Get);
-            request.AddHeader("Authentication", "Bearer ABCD123456");
+            string token = GetCookie();
+
+            if(string.IsNullOrEmpty(token))
+                Response.Redirect("/login");
+
+            request.AddHeader("Authentication", $"Bearer {token}");
 
             List<Book> books = await client.GetAsync<List<Book>>(request,CancellationToken.None);
 
             return View(books);
+        }
+
+        public string GetCookie()
+        {
+            return Request.Cookies["Token"];
         }
     }
 }
